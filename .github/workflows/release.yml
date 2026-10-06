@@ -1,9 +1,6 @@
-name: Release
+name: Upstream Release (manual reference)
 
-on:
-  push:
-    tags:
-      - "v*"
+on: workflow_dispatch
 
 jobs:
   build:

@@ -1,0 +1,45 @@
+name: Fork CI
+
+on:
+  push:
+    branches:
+      - fork-main
+      - "feature/**"
+  pull_request:
+    branches:
+      - fork-main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: fork-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.32.8"
+          cache: true
+      - name: Resolve dependencies
+        run: flutter pub get
+      - name: Analyze
+        run: flutter analyze
+      - name: Compile TV debug APK
+        run: >-
+          flutter build apk
+          --debug
+          --target=lib/main_tv.dart
+          --target-platform=android-arm
+          --flavor=tv
+      - name: Run native player unit tests
+        working-directory: android
+        run: ./gradlew :video_player:testDebugUnitTest --no-daemon
