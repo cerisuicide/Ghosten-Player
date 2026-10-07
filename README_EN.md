@@ -13,6 +13,11 @@
 
 English | [中文](./README.md)
 
+> **cerisuicide maintained edition:** a long-lived Android TV/projector fork
+> with coexistence-safe installation, remembered tracks and subtitle styling,
+> TrueHD/DTS support, malformed ASS compatibility, and automatic WebDAV movie
+> synchronization. See [`cerisuicide/Ghosten-Player`](https://github.com/cerisuicide/Ghosten-Player).
+
 **Ghosten Player** is a video player compatible with both 📱**Android Phone** and 📺**Android TV**, with future support for Windows and macOS under development. It integrates media resources, automatically scrapes metadata, supports IPTV playback, and elegantly builds your personal media library. With a clean interface and rich features, it works out of the box.
 
 ---  

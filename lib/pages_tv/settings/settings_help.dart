@@ -34,38 +34,40 @@ class _SettingsHelpState extends State<SettingsHelp> {
       title: AppLocalizations.of(context)!.settingsItemHelp,
       child: FutureBuilderHandler<List<WikiPage>>(
         future: cacheHttpClient
-            .get('https://raw.githubusercontent.com/$repoAuthor/$repoName/refs/heads/wiki/wiki.json')
+            .get('https://raw.githubusercontent.com/$upstreamRepoAuthor/$repoName/refs/heads/wiki/wiki.json')
             .then((resp) => (jsonDecode(resp.data) as List<dynamic>).map(WikiPage.fromJson).toList()),
-        builder: (context, snapshot) => Scrollbar(
-          controller: _controller,
-          child: ListView.builder(
-            padding: const EdgeInsets.only(left: 12, right: 12, top: 12, bottom: 32),
-            controller: _controller,
-            itemCount: snapshot.requireData.length,
-            itemBuilder: (context, index) {
-              final item = snapshot.requireData[index];
-              if (item.subs != null) {
-                return ExpansionTile(
-                  title: Text(item.title),
-                  childrenPadding: const EdgeInsets.only(left: 6, right: 6, top: 6, bottom: 12),
-                  children: item.subs!
-                      .map(
-                        (it) => ButtonSettingItem(
-                          title: Text(it.title),
-                          onTap: it.path != null ? () => _toDetail(it) : null,
-                        ),
-                      )
-                      .toList(),
-                );
-              } else {
-                return ButtonSettingItem(
-                  title: Text(item.title),
-                  onTap: item.path != null ? () => _toDetail(item) : null,
-                );
-              }
-            },
-          ),
-        ),
+        builder:
+            (context, snapshot) => Scrollbar(
+              controller: _controller,
+              child: ListView.builder(
+                padding: const EdgeInsets.only(left: 12, right: 12, top: 12, bottom: 32),
+                controller: _controller,
+                itemCount: snapshot.requireData.length,
+                itemBuilder: (context, index) {
+                  final item = snapshot.requireData[index];
+                  if (item.subs != null) {
+                    return ExpansionTile(
+                      title: Text(item.title),
+                      childrenPadding: const EdgeInsets.only(left: 6, right: 6, top: 6, bottom: 12),
+                      children:
+                          item.subs!
+                              .map(
+                                (it) => ButtonSettingItem(
+                                  title: Text(it.title),
+                                  onTap: it.path != null ? () => _toDetail(it) : null,
+                                ),
+                              )
+                              .toList(),
+                    );
+                  } else {
+                    return ButtonSettingItem(
+                      title: Text(item.title),
+                      onTap: item.path != null ? () => _toDetail(item) : null,
+                    );
+                  }
+                },
+              ),
+            ),
       ),
     );
   }
@@ -111,17 +113,18 @@ class _HelperDetailState extends State<HelperDetail> {
       body: Scrollbar(
         child: FutureBuilderHandler(
           future: cacheHttpClient
-              .get<String>('https://raw.githubusercontent.com/wiki/$repoAuthor/$repoName/${widget.page.path}')
+              .get<String>('https://raw.githubusercontent.com/wiki/$upstreamRepoAuthor/$repoName/${widget.page.path}')
               .then((resp) => resp.data),
-          builder: (context, snapshot) => KeyboardScroll(
-            autofocus: true,
-            controller: _autoScrollController,
-            child: MarkdownViewer(
-              autoScrollController: _autoScrollController,
-              padding: const EdgeInsets.only(left: 72, right: 72, bottom: 32),
-              data: snapshot.requireData!,
-            ),
-          ),
+          builder:
+              (context, snapshot) => KeyboardScroll(
+                autofocus: true,
+                controller: _autoScrollController,
+                child: MarkdownViewer(
+                  autoScrollController: _autoScrollController,
+                  padding: const EdgeInsets.only(left: 72, right: 72, bottom: 32),
+                  data: snapshot.requireData!,
+                ),
+              ),
         ),
       ),
     );

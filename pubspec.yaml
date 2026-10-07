@@ -63,7 +63,7 @@ dependencies:
   url_launcher: ^6.3.2
   video_player:
     git:
-      url: https://github.com/AAAAsea/Ghosten-Player-flutter-packages.git
+      url: https://github.com/cerisuicide/Ghosten-Player-flutter-packages.git
       path: video_player
       ref: 89927f78b0fb2cd2527c73d89ade838e5ea3af06
   volume_controller: ^3.4.1

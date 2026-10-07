@@ -30,7 +30,7 @@ class _SettingsHelpState extends State<SettingsHelp> {
       appBar: AppBar(title: Text(AppLocalizations.of(context)!.settingsItemHelp)),
       body: FutureBuilderHandler<List<WikiPage>>(
         future: cacheHttpClient
-            .get('https://raw.githubusercontent.com/$repoAuthor/$repoName/refs/heads/wiki/wiki.json')
+            .get('https://raw.githubusercontent.com/$upstreamRepoAuthor/$repoName/refs/heads/wiki/wiki.json')
             .then((resp) => (jsonDecode(resp.data) as List<dynamic>).map(WikiPage.fromJson).toList()),
         builder:
             (context, snapshot) => Scrollbar(
@@ -91,7 +91,7 @@ class HelperDetail extends StatelessWidget {
       body: Scrollbar(
         child: FutureBuilderHandler(
           future: cacheHttpClient
-              .get<String>('https://raw.githubusercontent.com/wiki/$repoAuthor/$repoName/${page.path}')
+              .get<String>('https://raw.githubusercontent.com/wiki/$upstreamRepoAuthor/$repoName/${page.path}')
               .then((resp) => resp.data),
           builder:
               (context, snapshot) => MarkdownViewer(

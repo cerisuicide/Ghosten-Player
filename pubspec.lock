@@ -957,7 +957,7 @@ packages:
       path: video_player
       ref: "89927f78b0fb2cd2527c73d89ade838e5ea3af06"
       resolved-ref: "89927f78b0fb2cd2527c73d89ade838e5ea3af06"
-      url: "https://github.com/AAAAsea/Ghosten-Player-flutter-packages.git"
+      url: "https://github.com/cerisuicide/Ghosten-Player-flutter-packages.git"
     source: git
     version: "0.0.0"
   visibility_detector:

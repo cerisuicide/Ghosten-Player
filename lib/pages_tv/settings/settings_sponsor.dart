@@ -79,8 +79,11 @@ class SettingsSponsor extends StatelessWidget {
                         return SliverList.builder(
                           itemCount: snapshot.requireData.length,
                           itemBuilder:
-                              (context, index) =>
-                                  ButtonSettingItem(dense: true, title: Text(snapshot.requireData[index]), onTap: () {}),
+                              (context, index) => ButtonSettingItem(
+                                dense: true,
+                                title: Text(snapshot.requireData[index]),
+                                onTap: () {},
+                              ),
                         );
                       },
                     ),
@@ -99,7 +102,7 @@ class SettingsSponsor extends StatelessWidget {
     final proxy = context.read<UserConfig>().githubProxy;
     try {
       final resp = await Dio().get(
-        '${proxy}https://raw.githubusercontent.com/$repoAuthor/$repoName/main/sponsor_list.txt',
+        '${proxy}https://raw.githubusercontent.com/$upstreamRepoAuthor/$repoName/main/sponsor_list.txt',
       );
       final data = resp.data as String;
       return data.split('\n').where((s) => s.trim().isNotEmpty).toList();

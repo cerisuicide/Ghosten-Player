@@ -13,6 +13,11 @@
 
 中文 | [English](./README_EN.md)
 
+> **cerisuicide 维护增强版：** 面向 Android TV/投影仪长期维护，包含并存安装、
+> 音轨与字幕偏好记忆、字幕位置与样式、TrueHD/DTS 支持、异常 ASS 修复以及
+> WebDAV 电影目录自动同步。源码与后续发布见
+> [`cerisuicide/Ghosten-Player`](https://github.com/cerisuicide/Ghosten-Player)。
+
 Ghosten Player 是一款同时适配 📱**Android Phone** 和 📺**Android TV** 的视频播放器(未来将支持 Windows 和 macOS)。整合影视资源，自动刮削媒体信息，支持IPTV播放，优雅打造私人影视库。 界面简洁，功能丰富，开箱即用。
 
 ---

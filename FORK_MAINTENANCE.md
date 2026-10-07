@@ -6,8 +6,8 @@ can be installed alongside the upstream application.
 
 ## Repositories
 
-- App: `AAAAsea/Ghosten-Player`
-- Player and native packages: `AAAAsea/Ghosten-Player-flutter-packages`
+- App: `cerisuicide/Ghosten-Player`
+- Player and native packages: `cerisuicide/Ghosten-Player-flutter-packages`
 - Upstream app: `GhostenEditor/Ghosten-Player`
 - Upstream packages: `GhostenEditor/Ghosten-Player-flutter-packages`
 

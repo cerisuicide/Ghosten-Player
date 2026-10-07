@@ -108,7 +108,7 @@ class _SettingsSponsorState extends State<SettingsSponsor> {
     final proxy = context.read<UserConfig>().githubProxy;
     try {
       final resp = await Dio().get(
-        '${proxy}https://raw.githubusercontent.com/$repoAuthor/$repoName/main/sponsor_list.txt',
+        '${proxy}https://raw.githubusercontent.com/$upstreamRepoAuthor/$repoName/main/sponsor_list.txt',
       );
       final data = resp.data as String;
       return data.split('\n').where((s) => s.trim().isNotEmpty).toList();
